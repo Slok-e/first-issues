@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-MAINTAINER Arshad Kazmi
+LABEL Arshad Kazmi
 
 RUN apt-get update
 RUN apt-get -y install software-properties-common

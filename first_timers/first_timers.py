@@ -5,14 +5,20 @@ import warnings
 from datetime import datetime
 import requests
 import tweepy
+import logging
 
 DAYS_OLD = 15
 MAX_TWEETS_LEN = 280
-
+#issue_label = "first-timers-only"
 ellipse = u'…'
 api = 'https://api.github.com/search/issues'
 FIRST_ISSUE_QUERY_URL = api + '?q=label:"{}"+is:issue+is:open&sort=updated&order=desc'
 
+#logging.basicConfig(filename='User_Error.log',
+                        #filemode='a',
+                        #level=logging.INFO,
+                        #format='%(asctime)s - %(message)s',
+                        #datefmt='%m-%d-%Y %H:%M:%S')
 
 def humanize_url(api_url: str) -> str:
     """Make an API endpoint to an Human endpoint."""
@@ -21,6 +27,7 @@ def humanize_url(api_url: str) -> str:
     if not match:
         raise ValueError(f'Format of API URLs has changed: {api_url}')
     user, repo, issue_num = match.group(1, 2, 3)
+    #logging.warning(f'User Error: {}')
 
     return f'https://github.com/{user}/{repo}/issues/{issue_num}'
 
